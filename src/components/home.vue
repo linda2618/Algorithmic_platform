@@ -1,11 +1,11 @@
 <template>
-    <el-container>
+    <el-container class="home-contain">
         <el-header>
             <div>
                 <img src="../assets/title.png" alt="">
                 <span>算法在线管理系统</span>
             </div>
-            <el-button type="info">退出</el-button>
+            <el-button type="info" @click="logout">退出</el-button>
         </el-header>
         <el-container>
             <el-aside width="200px">
@@ -49,7 +49,14 @@
                     </el-sub-menu>
                 </el-menu>
             </el-aside>
-            <el-main>Main</el-main>
+            <el-main>
+                <!-- 路由占位符 -->
+                <router-view></router-view>
+
+                <!-- 这是路由标签 -->
+                <!-- <router-link to="./userList/index.vue"></router-link> -->
+
+            </el-main>
         </el-container>
     </el-container>
 </template>
@@ -59,10 +66,19 @@ import { reactive } from 'vue'
 //导入icon图标
 import { Menu } from "@element-plus/icons-vue";
 
+const logout = () => {
+    window.sessionStorage.clear()
+    this.$router.push('/')
+}
+
 
 </script>
 
 <style lang="less" scoped>
+.home-contain {
+    height: 100%;
+}
+
 .home_container {
     height: 100%;
 }
@@ -91,7 +107,11 @@ import { Menu } from "@element-plus/icons-vue";
 }
 
 .el-aside {
-    background-color: #898a8b;
+    background-color: rgba(84, 92, 100);
+
+    .el-menu {
+        border-right: none;
+    }
 }
 
 .el-main {

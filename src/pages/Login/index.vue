@@ -4,16 +4,16 @@
             <div class="title">
                 <h1>每日算法</h1>
             </div>
-            <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="100px"
+            <el-form ref="loginFormRef" :model="login_Form" status-icon :rules="loginRules" label-width="100px"
                 class="demo-ruleForm">
                 <el-form-item label="账号名" prop="username" style="width:400px">
-                    <el-input v-model="ruleForm.username" type="input" size="large" />
+                    <el-input v-model="login_Form.username" type="input" size="large" />
                 </el-form-item>
                 <el-form-item label="密码" prop="password" style="width:400px">
-                    <el-input v-model="ruleForm.password" type="password" autocomplete="off" size="large" />
+                    <el-input v-model="login_Form.password" type="password" autocomplete="off" size="large" />
                 </el-form-item>
                 <el-form-item>
-                    <el-button class="login_button" type="primary" size="large">登录/注册</el-button>
+                    <el-button class="login_button" type="primary" size="large" @click="login">登录/注册</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -24,12 +24,12 @@
 <script setup>
 import { reactive } from 'vue'
 
-const ruleForm = reactive({
+const login_Form = reactive({
     username: '',
     password: ''
 })
 
-const rules = reactive({
+const loginRules = reactive({
     username: [
         { required: true, message: "请输入账号名", trigger: "blur" },
         {
@@ -41,6 +41,23 @@ const rules = reactive({
     password: [
         { required: true, message: "请输入密码", trigger: "blur" },]
 })
+
+//获取表单元素
+const loginFormRef = ref()
+//登录/注册按钮
+const login = () => {
+    //预验证
+    loginFormRef.value.validate(valid => {
+        // 根据预验证 判断是否发起请求
+        if (valid) {
+
+        }
+
+    })
+
+
+
+}
 
 </script>
 
