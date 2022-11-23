@@ -16,6 +16,7 @@ instance.interceptors.request.use(
     //对请求的配置文件做处理
     //   config.headers = config.headers || {};
     if (config.headers.token) {
+      config.headers = config.headers || {};
       config.headers.Authorization = window.sessionStorage.getItem("token");
     }
     return config;

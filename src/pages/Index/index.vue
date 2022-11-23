@@ -20,9 +20,9 @@
             </div>
             <div class="header_right">
                 <ul>
-                    <li><a href="#">登录</a></li>
+                    <li><a href="#" @click="handleClick">登录</a></li>
                     <li><span>或</span></li>
-                    <li><a href="#">注册</a></li>
+                    <li><a href="#" @click="        ">注册</a></li>
                 </ul>
             </div>
         </el-header>
@@ -37,16 +37,46 @@
             </div>
         </div>
 
+
+        <!-- <el-dialog v-model="showLoginViewDialogVisible" title="登录" width="40%" show-close>
+        </el-dialog> -->
+
+        <!-- 登录弹出框 -->
+        <div :class="{ type: store.state.showLoginView }">
+            <Login></Login>
+        </div>
+
     </div>
 
 
 </template>
 
 <script setup>
+// 引入登录组件
+import Login from '../Login/index.vue'
+import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 
+//按需引入 useStore()方法
+import { useStore } from 'vuex'
+// useStore()方法创建store对象，相当于src/store/index.js中的store实例对象
+const store = useStore()
+
+const router = useRouter()
+
+
+// 修改showLoginView的值
+const handleClick = () => {
+    //触发mutation, 用于同步修改state的信息
+    store.commit('changeStyle', !store.state.showLoginView)
+}
 </script>
 
 <style lang="less" scoped>
+.type {
+    display: none;
+}
+
 .index_header {
     background-color: #fff;
 }

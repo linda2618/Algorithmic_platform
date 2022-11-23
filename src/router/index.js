@@ -10,12 +10,15 @@ const routes = [
     path: "/",
     name: "index",
     component: Index,
+    children: [
+      {
+        path: "login",
+        name: "login",
+        component: () => import("../pages/Login/index.vue"),
+      },
+    ],
   },
-  {
-    path: "/login",
-    name: "login",
-    component: () => import("../pages/Login/index.vue"),
-  },
+
   {
     path: "/home",
     name: "home",
@@ -45,7 +48,6 @@ router.beforeEach((to, from, next) => {
   // if (!token && to.path !== "/login") {
   //   return "/login";
   // }
-  console.log("打开某个路由页面", to);
   next();
 });
 

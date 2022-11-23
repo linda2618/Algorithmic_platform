@@ -1,6 +1,10 @@
 <template>
-    <div id="box">
+    <!-- vuex 页面中直接使用渲染时与vue2中的使用方法相同 -->
+    <div id="box" :class="{ type: store.state.showLoginView }">
         <div class="login_box">
+            <div class="close_box" @click="handleClick">
+                <span>x</span>
+            </div>
             <div class="title">
                 <h1>每日算法</h1>
             </div>
@@ -18,24 +22,42 @@
             </el-form>
         </div>
 
+
     </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+import { loginApi } from '../../axios/apis'
+import { useRouter } from 'vue-router';
+//按需引入 useStore()方法
+import { useStore } from 'vuex'
+
+const router = useRouter()
+
+// this.$store.state.info
+// Vue3中store类似于Vue2中this.$store
+// useStore()方法创建store对象，相当于src/store/index.js中的store实例对象
+const store = useStore()
+
+// 修改showLoginView的值
+const handleClick = () => {
+    //触发mutation, 用于同步修改state的信息
+    store.commit('changeStyle', !store.state.showLoginView)
+}
 
 const login_Form = reactive({
-    username: '',
-    password: ''
+    username: 'admin',
+    password: '123456'
 })
 
 const loginRules = reactive({
     username: [
         { required: true, message: "请输入账号名", trigger: "blur" },
         {
-            min: 6,
+            min: 5,
             max: 10,
-            message: "长度在 6 到 10 个字符",
+            message: "长度在 65到 10 个字符",
             trigger: "blur",
         }],
     password: [
@@ -44,20 +66,30 @@ const loginRules = reactive({
 
 //获取表单元素
 const loginFormRef = ref()
+
 //登录/注册按钮
 const login = () => {
+    // console.log(loginFormRef);
+    // console.log(login_Form);
     //预验证
-    loginFormRef.value.validate(valid => {
+    loginFormRef.value.validate((valid) => {
         // 根据预验证 判断是否发起请求
-        if (valid) {
+        if (!valid) return;
 
-        }
-
+        loginApi(login_Form).then(res => {
+            // console.log(res.data);
+            window.sessionStorage.setItem('token', res.data.token)
+            router.push('/home')
+        })
     })
-
-
-
 }
+
+// //是否显示登录/注册框
+// const showLoginView = ref(false)
+// //改变样式显示隐藏登录框
+// const changeStyle = () => {
+//     showLoginView.value = true
+// }
 
 </script>
 
@@ -83,9 +115,9 @@ body {
     transform: translate(-50%, -50%);
     width: 480px;
     height: 500px;
-    background-color: #fff;
     border-radius: 20px;
-    box-shadow: 10px 5px 5px rgb(182, 171, 171);
+    box-shadow: 10px 5px 5px rgb(225, 219, 219);
+    background: #fff;
     pointer-events: auto;
 
 
@@ -101,5 +133,28 @@ body {
     margin-left: 20px;
     font-family: "Microsoft YaHei";
 
+}
+
+.type {
+    display: none;
+}
+
+.close_box {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 15x;
+    right: -50px;
+    border-radius: 20px;
+    // 背景线性渐变
+    // background: linear-gradient(to bottom right, pink, yellow, violet, skyblue);
+
+
+    span {
+        font-size: 30px;
+        color: rgb(125, 127, 127);
+        margin-left: 13px;
+        line-height: 40px;
+    }
 }
 </style>
