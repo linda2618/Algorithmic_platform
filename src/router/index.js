@@ -17,8 +17,14 @@ const routes = [
   {
     path: "/home",
     name: "home",
+    redirect: "/welcome",
     component: () => import("../components/home.vue"),
     children: [
+      {
+        path: "/welcome",
+        name: "welcome",
+        component: () => import("../components/welcome.vue"),
+      },
       //嵌套一级子路由
       {
         //假设数据-用户数据

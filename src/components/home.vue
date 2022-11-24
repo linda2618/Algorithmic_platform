@@ -82,9 +82,6 @@ const logout = () => {
     router.push('/')
 }
 
-
-
-
 </script>
 
 <style lang="less" scoped>
