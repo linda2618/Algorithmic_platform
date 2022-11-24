@@ -1,5 +1,6 @@
 <template>
     <el-container class="home-contain">
+        <!-- 头部 -->
         <el-header>
             <div>
                 <img src="../assets/title.png" alt="">
@@ -8,9 +9,11 @@
             <el-button type="info" @click="logout">退出</el-button>
         </el-header>
         <el-container>
+
+            <!-- 侧边栏 -->
             <el-aside width="200px">
-                <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo"
-                    default-active="2" text-color="#fff">
+                <el-menu active-text-color="#409EFF" background-color="#545c64" class="el-menu-vertical-demo"
+                    :default-active="active" text-color="#fff" unique-opened router>
                     <el-sub-menu index="1">
                         <template #title>
                             <el-icon>
@@ -20,16 +23,11 @@
                                 用户管理
                             </span>
                         </template>
-                        <el-menu-item index="1-1">
+                        <el-menu-item :index="list[0].path">
                             <el-icon>
                                 <Menu />
                             </el-icon>
                             用户列表
-                        </el-menu-item>
-                        <el-menu-item index="1-2">
-                            <el-icon>
-                                <Menu />
-                            </el-icon>被封禁用户列表
                         </el-menu-item>
                     </el-sub-menu>
                     <el-sub-menu index="2">
@@ -41,21 +39,22 @@
                                 题目管理
                             </span>
                         </template>
-                        <el-menu-item index="2-1">
+                        <el-menu-item :index="list[1].path">
                             <el-icon>
                                 <Menu />
-                            </el-icon>题目列表
+                            </el-icon>
+                            题目列表
                         </el-menu-item>
                     </el-sub-menu>
                 </el-menu>
             </el-aside>
+
+            <!-- 主体区域 -->
             <el-main>
                 <!-- 路由占位符 -->
                 <router-view></router-view>
-
                 <!-- 这是路由标签 -->
                 <!-- <router-link to="./userList/index.vue"></router-link> -->
-
             </el-main>
         </el-container>
     </el-container>
@@ -65,11 +64,25 @@
 import { reactive } from 'vue'
 //导入icon图标
 import { Menu } from "@element-plus/icons-vue";
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter()
+const route = useRoute()
+
+const active = route.path
+// console.log(active);
+
+//方法能获取到静态和动态的所有路由
+const list = router.getRoutes().filter(v => v.meta.isShow)
+// console.log(list);
+
+
 
 const logout = () => {
     window.sessionStorage.clear()
-    this.$router.push('/')
+    router.push('/')
 }
+
+
 
 
 </script>

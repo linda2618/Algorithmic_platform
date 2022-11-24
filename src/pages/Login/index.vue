@@ -35,7 +35,6 @@ import { useStore } from 'vuex'
 
 const router = useRouter()
 
-// this.$store.state.info
 // Vue3中store类似于Vue2中this.$store
 // useStore()方法创建store对象，相当于src/store/index.js中的store实例对象
 const store = useStore()
@@ -72,15 +71,14 @@ const login = () => {
     // console.log(loginFormRef);
     // console.log(login_Form);
     //预验证
-    loginFormRef.value.validate((valid) => {
+    loginFormRef.value.validate(async (valid) => {
         // 根据预验证 判断是否发起请求
         if (!valid) return;
 
-        loginApi(login_Form).then(res => {
-            // console.log(res.data);
-            window.sessionStorage.setItem('token', res.data.token)
-            router.push('/home')
-        })
+        const res = await loginApi(login_Form)
+        // console.log(res.data);
+        window.sessionStorage.setItem('token', res.data.token)
+        router.push('/home')
     })
 }
 
@@ -99,32 +97,35 @@ body {
 }
 
 #box {
+    z-index: 100;
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background-color: rgba(221, 221, 221, 0.5);
-    pointer-events: none;
-}
-
-.login_box {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 480px;
-    height: 500px;
-    border-radius: 20px;
-    box-shadow: 10px 5px 5px rgb(225, 219, 219);
-    background: #fff;
+    // auto——效果和没有定义pointer-events属性相同，鼠标不会穿透当前层。
     pointer-events: auto;
 
+    .login_box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 480px;
+        height: 500px;
+        border-radius: 20px;
+        box-shadow: 10px 5px 5px rgb(225, 219, 219);
+        background: #fff;
 
-    .login_button {
-        width: 300px;
+
+        .login_button {
+            width: 300px;
+        }
     }
 }
+
+
 
 .title {
     margin: 40px 0px 20px;
@@ -146,6 +147,8 @@ body {
     top: 15x;
     right: -50px;
     border-radius: 20px;
+    cursor: pointer;
+    background-color: rgb(227, 222, 222);
     // 背景线性渐变
     // background: linear-gradient(to bottom right, pink, yellow, violet, skyblue);
 
@@ -154,7 +157,7 @@ body {
         font-size: 30px;
         color: rgb(125, 127, 127);
         margin-left: 13px;
-        line-height: 40px;
+        line-height: 35px;
     }
 }
 </style>

@@ -22,7 +22,7 @@
                 <ul>
                     <li><a href="#" @click="handleClick">登录</a></li>
                     <li><span>或</span></li>
-                    <li><a href="#" @click="        ">注册</a></li>
+                    <li><a href="#" @click="handleClick">注册</a></li>
                 </ul>
             </div>
         </el-header>
