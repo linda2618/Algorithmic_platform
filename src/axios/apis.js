@@ -6,5 +6,13 @@ export const loginApi = (data) => {
 };
 
 export const getUserList = (data) => {
-  return axios({ url: "users", method: "get", data });
+  return axios({ url: "users", method: "get", params: data });
+};
+
+//修改用户状态
+export const changeUserState = (data) => {
+  return axios({
+    url: `users/${data.id}/state/${data.mg_state}`,
+    method: "put",
+  });
 };

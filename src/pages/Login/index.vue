@@ -32,6 +32,8 @@ import { loginApi } from '../../axios/apis'
 import { useRouter } from 'vue-router';
 //按需引入 useStore()方法
 import { useStore } from 'vuex'
+import { ElMessage } from 'element-plus'
+
 
 const router = useRouter()
 
@@ -77,6 +79,13 @@ const login = () => {
 
         const res = await loginApi(login_Form)
         // console.log(res.data);
+        // console.log(res.meta);
+        if (res.meta.status !== 200) return ElMessage.error('登录失败！')
+
+        ElMessage({
+            message: '登录成功!',
+            type: 'success',
+        })
         window.sessionStorage.setItem('token', res.data.token)
         router.push('/home')
     })

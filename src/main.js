@@ -9,7 +9,7 @@ import store from "./store";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 //导入字体图标
-import "./assets/font_2895448_xona8jdst7d/iconfont.css";
+import "./assets/font_2895448_g40cbzbnu6/iconfont.css";
 //导入全局样式表
 import "./assets/css/global.css";
 

@@ -61,10 +61,11 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 //导入icon图标
 import { Menu } from "@element-plus/icons-vue";
 import { useRouter, useRoute } from 'vue-router'
+
 const router = useRouter()
 const route = useRoute()
 
@@ -74,8 +75,6 @@ const active = route.path
 //方法能获取到静态和动态的所有路由
 const list = router.getRoutes().filter(v => v.meta.isShow)
 // console.log(list);
-
-
 
 const logout = () => {
     window.sessionStorage.clear()
