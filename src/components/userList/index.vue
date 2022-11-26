@@ -98,10 +98,45 @@ const userStateChanged = async (userInfo) => {
 }
 
 //修改按钮
-const showEditDialog = () => {
+const showEditDialog = async (id) => {
+    //展示编辑用户的对话框
+
+    // console.log(id);
+    const { data: res } = await this.$http.get("users/" + id);
+    if (res.meta.status !== 200) {
+        this.$message.error("查询用户信息失败");
+    }
+    this.editForm = res.data;
+    this.editDialogVisible = true;
 
 }
 
+//删除按钮,根据id 删除对应用户信息
+const removeUserById = async (id) => {
+    //弹框询问用户是否删除数据
+    const confirmRes = await this.$confirm(
+        "此操作将永久删除该用户, 是否继续?",
+        "提示",
+        {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+        }
+    ).catch((err) => err);
+    //如果用户 确认 删除,则返回值为 字符串 confirm
+    //如果用户 取消了删除,则返回值为 字符串 cancel
+    // console.log(confirmRes);
+    if (confirmRes !== "confirm") {
+        return this.$message.info("已取消删除");
+    }
+    const { data: res } = await this.$http.delete("users/" + id);
+
+    if (res.meta.status !== 200) {
+        return this.$message.error("删除用户失败");
+    }
+    this.$message.success("删除用户成功");
+    this.getUserList();
+}
 </script>
 
 <style lang="less" scoped>
