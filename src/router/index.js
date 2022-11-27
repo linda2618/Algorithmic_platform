@@ -46,6 +46,16 @@ const routes = [
         },
         component: () => import("../components/Topic/index.vue"),
       },
+      {
+        //假设解题数据 --商品数据
+        path: "good",
+        name: "good",
+        meta: {
+          title: "发布题目列表",
+          isShow: true,
+        },
+        component: () => import("../components/AddTopic/index.vue"),
+      },
     ],
   },
 ];

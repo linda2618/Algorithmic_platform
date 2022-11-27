@@ -45,6 +45,12 @@
                             </el-icon>
                             题目列表
                         </el-menu-item>
+                        <el-menu-item :index="list[2].path">
+                            <el-icon>
+                                <Menu />
+                            </el-icon>
+                            发布/修改题目
+                        </el-menu-item>
                     </el-sub-menu>
                 </el-menu>
             </el-aside>
@@ -74,7 +80,8 @@ const active = route.path
 
 //方法能获取到静态和动态的所有路由
 const list = router.getRoutes().filter(v => v.meta.isShow)
-// console.log(list);
+console.log(123123);
+console.log(list);
 
 const logout = () => {
     window.sessionStorage.clear()
