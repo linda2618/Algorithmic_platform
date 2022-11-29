@@ -14,10 +14,11 @@
                 <div class="card-header">
                     <el-row :gutter="25">
                         <el-col :span="9">
-                            <el-input placeholder="请输入内容" clearable> </el-input>
+                            <el-input placeholder="请输入内容" v-model="queryInfo.query" clearable @clear="getUserListView">
+                            </el-input>
                         </el-col>
                         <el-col :span="3">
-                            <el-button type="primary">添加用户</el-button>
+                            <el-button type="primary" @click="getUserListView">查询</el-button>
                         </el-col>
                     </el-row>
                 </div>
@@ -170,7 +171,7 @@ const handleCurrentChange = (newPage) => {
 // 监听 switch 开头状态的改变
 const userStateChanged = async (userInfo) => {
     const res = await changeUserState(userInfo);
-    console.log(res);
+    // console.log(res);
     if (res.meta.status !== 200) {
         userInfo.mg_state = !userInfo.mg_state;
         return ElMessage.error("更新用户状态失败");
@@ -239,7 +240,7 @@ const removeUserById = async (id) => {
         return ElMessage.error("已取消删除");
     }
     const res = await deleteOneUser(id)
-    console.log(res);
+    // console.log(res);
     if (res.meta.status !== 200) {
         return ElMessage.error("删除用户失败");
     }

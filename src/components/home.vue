@@ -80,8 +80,6 @@ const active = route.path
 
 //方法能获取到静态和动态的所有路由
 const list = router.getRoutes().filter(v => v.meta.isShow)
-console.log(123123);
-console.log(list);
 
 const logout = () => {
     window.sessionStorage.clear()

@@ -36,5 +36,9 @@ export const deleteOneUser = (data) => {
   return axios({ url: `users/${data}`, method: "delete" });
 };
 
+////////////////////////////////题目列表接口
+
 //获取订单（题目）列表
-export const getOrderList = (data) => {};
+export const getOrderList = (data) => {
+  return axios({ url: "orders", method: "get", params: data });
+};
