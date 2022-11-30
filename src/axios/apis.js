@@ -38,7 +38,21 @@ export const deleteOneUser = (data) => {
 
 ////////////////////////////////题目列表接口
 
-//获取订单（题目）列表
-export const getOrderList = (data) => {
-  return axios({ url: "orders", method: "get", params: data });
+//获取商品（题目）列表
+export const getGoodsList = (data) => {
+  return axios({ url: "goods", method: "get", params: data });
+};
+
+//删除商品
+export const deleteOneGood = (data) => {
+  return axios({ url: `goods/${data}`, method: "delete" });
+};
+
+//根据ID查询商品
+export const getGoodsListById = (data) => {
+  return axios({ url: `goods/${data}`, method: "get" });
+};
+//编辑提交商品
+export const changeGoodsState = (data) => {
+  return axios({ url: `goods/${data.cat_id}`, method: "put", data });
 };

@@ -38,8 +38,8 @@ const routes = [
       },
       {
         //假设题目数据  -订单数据
-        path: "order",
-        name: "order",
+        path: "goods",
+        name: "goods",
         meta: {
           title: "题目列表",
           isShow: true,
@@ -47,9 +47,18 @@ const routes = [
         component: () => import("../components/Topic/index.vue"),
       },
       {
+        //修改题目页面
+        path: "goods/update",
+        name: "update",
+        meta: {
+          title: "修改题目列表",
+        },
+        component: () => import("../components/Topic/Update.vue"),
+      },
+      {
         //假设解题数据 --商品数据
-        path: "good",
-        name: "good",
+        path: "order",
+        name: "order",
         meta: {
           title: "发布题目列表",
           isShow: true,

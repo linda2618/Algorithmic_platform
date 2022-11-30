@@ -86,6 +86,12 @@ const logout = () => {
     router.push('/')
 }
 
+//保存链接的激活状态
+// saveNavStatus(activePath) {
+//     window.sessionStorage.setItem("activePath", activePath);
+//     this.activePath = activePath;
+// }
+
 </script>
 
 <style lang="less" scoped>
