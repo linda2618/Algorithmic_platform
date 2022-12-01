@@ -22,9 +22,13 @@
                     <el-input v-model="TopicDetail.upd_time" disabled />
                 </el-form-item>
                 <el-form-item label="是否是热销品" prop="is_promote">
-                    <el-tag class="ml-2" v-if="TopicDetail.is_promote === 'true'" type="success" size="large"> 是
+                    <el-tag class="ml-2" v-if="TopicDetail.is_promote === true" type="success" size="large"> 是
                     </el-tag>
-                    <el-tag class="ml-2" v-else type="danger" size="large"> 否 </el-tag>
+                    <el-tag class="ml-2" v-if="TopicDetail.is_promote === false" type="danger" size="large"> 否
+                    </el-tag>
+                    <!-- <el-tag class="ml-2" v-else type="danger" size="large">
+                        <el-input v-model="TopicDetail.is_promote" size="small" />
+                    </el-tag> -->
                 </el-form-item>
                 <el-form-item label="详情图片" prop="is_promote">
                     <div class="demo-image__placeholder">
@@ -50,7 +54,7 @@
 import { onMounted, ref, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { getGoodsListById, changeGoodsState } from '@/axios/apis.js'
-import { ElMessage, ElMessageBox } from "element-plus";
+import { ElMessage } from "element-plus";
 
 const route = useRoute()
 
@@ -114,9 +118,9 @@ onMounted(() => {
     getGoodsListByIdView()
 })
 
+
 const getGoodsListByIdView = async () => {
     const res = await getGoodsListById(Id)
-    console.log(res);
     if (res.meta.status !== 200) {
         return ElMessage.error("获取此题目数据失败");
     }

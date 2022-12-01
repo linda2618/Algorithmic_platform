@@ -122,7 +122,7 @@ body {
         top: 50%;
         transform: translate(-50%, -50%);
         width: 480px;
-        height: 500px;
+        height: 600px;
         border-radius: 20px;
         box-shadow: 10px 5px 5px rgb(225, 219, 219);
         background: #fff;

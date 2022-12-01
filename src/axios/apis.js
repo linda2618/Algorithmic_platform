@@ -56,3 +56,8 @@ export const getGoodsListById = (data) => {
 export const changeGoodsState = (data) => {
   return axios({ url: `goods/${data.cat_id}`, method: "put", data });
 };
+
+//添加商品
+export const AddOneGoods = (data) => {
+  return axios({ url: "goods", method: "post", data });
+};
