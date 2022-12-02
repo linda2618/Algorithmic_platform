@@ -6,28 +6,21 @@ body,
     height: 100%;
     margin: 0;
     padding: 0;
-    min-width: 1366px;
+    box-sizing: border-box;
 }
-.el-breadcrumb {
-    margin-bottom: 15px;
-    font-size: 12px;
+/* 去掉li 的小圆点 */
+li {
+    list-style: none
 }
-.el-card {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .15)
+button {
+    /* 当我们鼠标经过button 按钮的时候，鼠标变成小手 */
+    cursor: pointer
 }
-.el-table {
-    margin-top: 15px;
-    /* font-size: 14px; */
+a {
+    color: #666;
+    text-decoration: none
 }
-.el-pagination {
-    margin-top: 15px;
-}
-.el-steps {
-    margin: 15px 0; 
-}
-.el-step__title {
-    font-size: 13px;
-}
-.ql-editor{
-    min-height: 300px;
+
+a:hover {
+    color: #c81623
 }

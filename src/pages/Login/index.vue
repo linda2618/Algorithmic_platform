@@ -91,12 +91,6 @@ const login = () => {
     })
 }
 
-// //是否显示登录/注册框
-// const showLoginView = ref(false)
-// //改变样式显示隐藏登录框
-// const changeStyle = () => {
-//     showLoginView.value = true
-// }
 
 </script>
 
