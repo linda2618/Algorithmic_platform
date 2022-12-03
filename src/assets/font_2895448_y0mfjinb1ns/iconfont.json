@@ -6,6 +6,118 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "18167099",
+      "name": "警察半身,公安",
+      "font_class": "policeman-full",
+      "unicode": "e8f1",
+      "unicode_decimal": 59633
+    },
+    {
+      "icon_id": "18799722",
+      "name": "派出所",
+      "font_class": "paichusuo",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "1360",
+      "name": "新浪微博",
+      "font_class": "xinlangweibo",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "77156",
+      "name": "微信",
+      "font_class": "weixin2",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "201555",
+      "name": "表情",
+      "font_class": "biaoqing",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "599933",
+      "name": "微信",
+      "font_class": "weixin3",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "830931",
+      "name": "微信",
+      "font_class": "weixin4",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "1274273",
+      "name": "微信",
+      "font_class": "weixin5",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "1471079",
+      "name": "表情",
+      "font_class": "biaoqing-xue",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "1582883",
+      "name": "讨论",
+      "font_class": "taolun",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "1719343",
+      "name": "随机",
+      "font_class": "suiji",
+      "unicode": "e7b8",
+      "unicode_decimal": 59320
+    },
+    {
+      "icon_id": "3865279",
+      "name": "讨论",
+      "font_class": "taolun1",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "5699519",
+      "name": "微博",
+      "font_class": "weibo",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "9186712",
+      "name": "微博",
+      "font_class": "weibo1",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "11776582",
+      "name": "微博",
+      "font_class": "weibo2",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "18167087",
+      "name": "警察,公安",
+      "font_class": "police",
+      "unicode": "e8f0",
+      "unicode_decimal": 59632
+    },
+    {
       "icon_id": "31154",
       "name": "设置",
       "font_class": "shezhi",

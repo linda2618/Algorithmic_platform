@@ -19,7 +19,7 @@
 
     .container {
         margin-top: 40px;
-        width: 1200px;
+        width: 1500px;
         margin: 0 auto;
         background-color: #fff;
 

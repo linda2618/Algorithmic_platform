@@ -1,42 +1,50 @@
 .footer {
-    height: 415px;
-    background-color: hwb(0 64% 35%);
-    padding-top: 30px;
+    height: 500px;
+    color:#fff;
+    background-color: #000;
 }
-.service_txt h4 {
-    font-size: 14px;
+.w {
+    width: 1500px;
+    margin: 0 auto;
 }
-.service_txt  p {
-    font-size: 12px;
-}
+
 .mod_help {
-    height: 185px;
+    display: flex;
+    justify-content: space-around;
+    height: 300px;
     border-bottom: 1px solid #ccc;
-    padding-top: 20px;
-    padding-left: 50px;
+    padding-top: 45px;
 }
-.mod_help dl {
-    float: left;
-    width: 200px;
-}
-.mod_help dl:last-child {
-    width: 90px;
+
+.mod_help ul:last-child {
+    width: 80px;
     text-align: center;
 }
-.mod_help dl dt {
-    font-size: 16px; 
+.img_title {
+    margin-right: 10px;
+}
+.mod_help ul li {
+    font-size: 20px; 
     margin-bottom: 10px;
 }
+.mod_help ul li h5 img{
+    width: 75px;
+    height: 75px;
+}
+
 .mod_copyright {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 .links {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 .links a {
-    margin: 0 3px;
+    color: #fff;
+    font-size: 18px;
+    margin: 0 15px;
 }
 .copyright {
+    color: #ccc;
     line-height: 20px;
 }

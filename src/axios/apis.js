@@ -17,7 +17,7 @@ export const changeUserState = (data) => {
     method: "put",
   });
 };
-//编辑用户的信息
+//根据ID查询用户信息
 export const getEditUsers = (data) => {
   return axios({ url: `users/${data}`, method: "get" });
 };

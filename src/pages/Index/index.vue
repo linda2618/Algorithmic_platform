@@ -91,7 +91,7 @@ const handleClick = () => {
 
 
 .el-header {
-    width: 1500px;
+    width: 1700px;
     margin: 0 auto;
     font-size: 18px;
     height: 60px;
