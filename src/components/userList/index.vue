@@ -29,33 +29,34 @@
                 <el-table-column type="index" label="id" />
                 <el-table-column prop="username" label="用户名" />
                 <el-table-column prop="mobile" label="电话" />
-                <el-table-column prop="role_name" label="角色" />
+                <el-table-column prop="role" label="角色" />
                 <el-table-column prop="email" label="邮箱" />
-                <el-table-column label="状态" prop="mg_state">
-                    <!-- 用插槽包裹el-switch开关 -->
+                <el-table-column prop="createdTime" label="创建时间">
                     <template v-slot="scope">
-                        <span>封禁</span>
-                        <el-switch v-model="scope.row.mg_state" @change="userStateChanged(scope.row)" />
-                        <span>启用</span>
+                        {{ userTimeFormate(scope.row.createdTime) }}
+                    </template>
+                </el-table-column>
+                <el-table-column label="状态" prop="state">
+                    <template v-slot="scope">
+                        <el-switch v-model="scope.row.state" @change="userStateChanged(scope.row._id)" />
                     </template>
                 </el-table-column>
                 <el-table-column label="操作">
                     <template v-slot="scope">
                         <!-- 修改按钮 -->
                         <el-button type="primary" class="iconfont icon-zuoti" circle
-                            @click="showEditDialog(scope.row.id)" size="large">
+                            @click="showEditDialog(scope.row._id)" size="large">
                         </el-button>
                         <!-- 删除按钮 -->
                         <el-button type="danger" class="iconfont icon-shanchu2" circle
-                            @click="removeUserById(scope.row.id)" size="large">
+                            @click="removeUserById(scope.row._id)" size="large">
                         </el-button>
                     </template>
                 </el-table-column>
             </el-table>
             <!-- 分页区域 -->
-            <el-pagination v-model:current-page="queryInfo.pagenum" v-model:page-size="queryInfo.pagesize"
-                :page-sizes="[3, 5, 10]" layout="total, sizes, prev, pager, next, jumper" :total="total"
-                @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+            <el-pagination v-model:current-page="queryInfo.page" :page-sizes="[3, 5, 10]"
+                layout="total, sizes, prev, pager, next, jumper" :total="total" @current-change="handleCurrentChange" />
         </el-card>
 
         <!-- 修改用户的对话框 -->
@@ -94,9 +95,7 @@ import {
 import instance from "@/axios/index";
 import { ElMessage, ElMessageBox } from "element-plus";
 const queryInfo = reactive({
-    query: "",
-    pagenum: 1,
-    pagesize: 3,
+    page: 1,
 });
 
 const usersData = ref([]);
@@ -148,38 +147,45 @@ onMounted(() => {
 
 const getUserListView = async () => {
     const res = await getUserList(queryInfo);
-
-    if (res.meta.status !== 200) {
+    // console.log(res);
+    if (res.status !== 200) {
         return ElMessage.error("获取用户列表失败");
     }
-    // console.log(res);
-    usersData.value = res.data.users;
-    total.value = res.data.total;
+    usersData.value = res.data;
+    total.value = res.total;
 };
 
-// 监听 pagesize 改变的事件
-const handleSizeChange = (newSize) => {
-    queryInfo.pagesize = newSize;
-    getUserListView();
-};
+//格式化时间
+const userTimeFormate = (totalTime) => {
+    const date = new Date(totalTime)
+    const yyyy = date.getFullYear()
+    const MM = date.getMonth() + 1 < 10 ? '0' + date.getMonth() + 1 : date.getMonth() + 1
+    const dd = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
+    const hh = date.getHours() + 8 < 10 ? '0' + date.getHours() : date.getHours()
+    const mm = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+    const ss = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+    return yyyy + '-' + MM + '-' + dd + ' ' + hh + ':' + mm + ':' + ss
+}
 
 // 监听页码值 改变的事件
 const handleCurrentChange = (newPage) => {
-    queryInfo.pagenum = newPage;
+    queryInfo.page = newPage;
     getUserListView();
 };
-// 监听 switch 开头状态的改变
-const userStateChanged = async (userInfo) => {
-    const res = await changeUserState(userInfo);
-    // console.log(res);
-    if (res.meta.status !== 200) {
-        userInfo.mg_state = !userInfo.mg_state;
-        return ElMessage.error("更新用户状态失败");
+
+// 监听 switch 状态的改变
+const userStateChanged = async (_id) => {
+    console.log(_id);
+    const res = await changeUserState(_id);
+    console.log(res);
+
+    if (res.status === 200) {
+        ElMessage({
+            message: "禁用用户成功！",
+            type: "success",
+        });
     }
-    ElMessage({
-        message: "更新用户状态成功",
-        type: "success",
-    });
+    // getUserListView();
 };
 
 //修改按钮
@@ -240,7 +246,7 @@ const removeUserById = async (id) => {
         return ElMessage.error("已取消删除");
     }
     const res = await deleteOneUser(id)
-    // console.log(res);
+    console.log(res);
     if (res.meta.status !== 200) {
         return ElMessage.error("删除用户失败");
     }

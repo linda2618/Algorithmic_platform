@@ -25,24 +25,12 @@
                 </div>
                 <div class="header_right">
                     <ul>
-                        <li><a href="#" @click="handleClick">登录</a></li>
-                        <li><span>或</span></li>
-                        <li><a href="#" @click="handleClick">注册</a></li>
+                        <li><a href="#" @click="handleClick">登录/注册</a></li>
                         <li>
                             <el-avatar class="iconfont icon-ziyuanxhdpi" :size="large" />
                         </li>
                     </ul>
                 </div>
-                <!-- <div class="header_right1">
-                    <ul>
-                        <li><a href="#" @click="handleClick">登录</a></li>
-                        <li><span>或</span></li>
-                        <li><a href="#" @click="handleClick">注册</a></li>
-                        <li>
-                            <el-avatar class="iconfont icon-ziyuanxhdpi" :size="large" />
-                        </li>
-                    </ul>
-                </div> -->
             </div>
 
             <!-- 主体区域 -->

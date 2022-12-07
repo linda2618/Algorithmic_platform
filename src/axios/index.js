@@ -3,7 +3,7 @@ import axios from "axios";
 
 //创建axios实例
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8888/api/private/v1/",
+  baseURL: "http://150.158.165.9:5200",
   timeout: 2000,
   headers: {
     "Content-Type": "application/json;charset=utf-8",

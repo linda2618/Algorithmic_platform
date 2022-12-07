@@ -1,22 +1,31 @@
 //封装接口api
 import axios from "./index.js"; //默认导入 可以更换名称
 
+//注册
+export const regApi = (data) => {
+  return axios.post("/user/register", data);
+};
+
+//登录
 export const loginApi = (data) => {
-  return axios({ url: "login", method: "post", data });
+  return axios.post("/user/login", data);
 };
 
 //获取用户列表
 export const getUserList = (data) => {
-  return axios({ url: "users", method: "get", params: data });
+  return axios.get("/user/getUserList", { params: data });
 };
 
-//修改用户状态
-export const changeUserState = (data) => {
-  return axios({
-    url: `users/${data.id}/state/${data.mg_state}`,
-    method: "put",
-  });
+//是否禁用--状态
+export const changeUserState = (_id) => {
+  return axios.post("/user/relieveUser", { _id });
 };
+
+//删除单个用户
+export const deleteOneUser = (_id) => {
+  return axios.post("/user/deleteUser", { _id });
+};
+
 //根据ID查询用户信息
 export const getEditUsers = (data) => {
   return axios({ url: `users/${data}`, method: "get" });
@@ -29,11 +38,6 @@ export const putEditUsers = (data) => {
     method: "put",
     params: { email: data.value.email, mobile: data.value.mobile },
   });
-};
-
-//删除单个用户
-export const deleteOneUser = (data) => {
-  return axios({ url: `users/${data}`, method: "delete" });
 };
 
 ////////////////////////////////题目列表接口
