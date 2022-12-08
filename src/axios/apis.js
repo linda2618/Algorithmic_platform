@@ -17,8 +17,13 @@ export const getUserList = (data) => {
 };
 
 //是否禁用--状态
-export const changeUserState = (_id) => {
+//解禁
+export const changeUserState1 = (_id) => {
   return axios.post("/user/relieveUser", { _id });
+};
+//禁用
+export const changeUserState2 = (_id) => {
+  return axios.post("/user/disableUser", { _id });
 };
 
 //删除单个用户
@@ -31,37 +36,28 @@ export const getEditUsers = (data) => {
   return axios({ url: `users/${data}`, method: "get" });
 };
 
-// 提交 编辑修改用户信息
-export const putEditUsers = (data) => {
-  return axios({
-    url: `users/${data.value.id}`,
-    method: "put",
-    params: { email: data.value.email, mobile: data.value.mobile },
-  });
-};
-
 ////////////////////////////////题目列表接口
 
-//获取商品（题目）列表
-export const getGoodsList = (data) => {
-  return axios({ url: "goods", method: "get", params: data });
+//获取题目列表
+export const getQuestionList = (data) => {
+  return axios.get("/question/getQuestionList", { params: data });
 };
 
-//删除商品
-export const deleteOneGood = (data) => {
-  return axios({ url: `goods/${data}`, method: "delete" });
+//删除题目
+export const deleteOneGood = (_id) => {
+  return axios.post("/question/deleteQuestion", { _id });
 };
 
-//根据ID查询商品
-export const getGoodsListById = (data) => {
-  return axios({ url: `goods/${data}`, method: "get" });
+//根据ID查询题目
+export const getQuestionListById = (_id) => {
+  return axios.post("/question/getQuestionById", { _id });
 };
-//编辑提交商品
-export const changeGoodsState = (data) => {
-  return axios({ url: `goods/${data.cat_id}`, method: "put", data });
+//编辑提交题目
+export const changeQuestionState = (data) => {
+  return axios.post("/question/updateQuestion", data);
 };
 
-//添加商品
-export const AddOneGoods = (data) => {
-  return axios({ url: "goods", method: "post", data });
+//添加题目
+export const AddOneQuestion = (data) => {
+  return axios.post("/question/addQuestion", data);
 };

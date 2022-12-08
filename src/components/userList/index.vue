@@ -36,17 +36,14 @@
                         {{ userTimeFormate(scope.row.createdTime) }}
                     </template>
                 </el-table-column>
-                <el-table-column label="状态" prop="state">
+                <el-table-column label="是否禁用" prop="state">
                     <template v-slot="scope">
-                        <el-switch v-model="scope.row.state" @change="userStateChanged(scope.row._id)" />
+                        <el-switch v-model="scope.row.state" @change="userStateChanged(scope.row._id, scope.row.state)"
+                            style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" />
                     </template>
                 </el-table-column>
                 <el-table-column label="操作">
                     <template v-slot="scope">
-                        <!-- 修改按钮 -->
-                        <el-button type="primary" class="iconfont icon-zuoti" circle
-                            @click="showEditDialog(scope.row._id)" size="large">
-                        </el-button>
                         <!-- 删除按钮 -->
                         <el-button type="danger" class="iconfont icon-shanchu2" circle
                             @click="removeUserById(scope.row._id)" size="large">
@@ -87,7 +84,8 @@
 import { onMounted, reactive, ref } from "vue";
 import {
     getUserList,
-    changeUserState,
+    changeUserState1,
+    changeUserState2,
     getEditUsers,
     // putEditUsers,
     deleteOneUser,
@@ -174,18 +172,27 @@ const handleCurrentChange = (newPage) => {
 };
 
 // 监听 switch 状态的改变
-const userStateChanged = async (_id) => {
-    console.log(_id);
-    const res = await changeUserState(_id);
-    console.log(res);
+const userStateChanged = async (_id, state) => {
 
-    if (res.status === 200) {
-        ElMessage({
-            message: "禁用用户成功！",
-            type: "success",
-        });
+    if (state) {
+        const res = await changeUserState1(_id);
+        if (res.status === 200) {
+            ElMessage({
+                message: res.message,
+                type: "success",
+            });
+        }
     }
-    // getUserListView();
+    else {
+        const res1 = await changeUserState2(_id);
+        if (res1.status === 200) {
+            ElMessage({
+                message: res1.message,
+                type: "success",
+            });
+        }
+    }
+
 };
 
 //修改按钮
@@ -231,7 +238,7 @@ const editUserInfo = () => {
 };
 
 //删除按钮,根据id 删除对应用户信息
-const removeUserById = async (id) => {
+const removeUserById = async (_id) => {
     //弹框询问用户是否删除数据
     const confirmRes = await ElMessageBox.confirm("此操作将永久删除该用户, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -245,9 +252,9 @@ const removeUserById = async (id) => {
     if (confirmRes !== "confirm") {
         return ElMessage.error("已取消删除");
     }
-    const res = await deleteOneUser(id)
-    console.log(res);
-    if (res.meta.status !== 200) {
+    const res = await deleteOneUser(_id)
+    // console.log(res);
+    if (res.status !== 200) {
         return ElMessage.error("删除用户失败");
     }
     ElMessage({

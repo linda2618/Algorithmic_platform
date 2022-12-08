@@ -37,33 +37,33 @@ const routes = [
         component: () => import("../components/userList/index.vue"),
       },
       {
-        //假设题目数据  -订单数据
-        path: "goods",
-        name: "goods",
+        //题目数据
+        path: "question",
+        name: "question",
         meta: {
           title: "题目列表",
           isShow: true,
         },
-        component: () => import("../components/Topic/index.vue"),
+        component: () => import("../components/Question/index.vue"),
       },
       {
-        //修改题目页面
-        path: "goods/update",
+        //修改题目组件
+        path: "question/update",
         name: "update",
         meta: {
           title: "修改题目列表",
         },
-        component: () => import("../components/Topic/Update.vue"),
+        component: () => import("../components/Question/Update.vue"),
       },
       {
-        //假设解题数据 --商品数据
-        path: "order",
-        name: "order",
+        //添加题目组件
+        path: "addQuestion",
+        name: "addQuestion",
         meta: {
           title: "发布题目列表",
           isShow: true,
         },
-        component: () => import("../components/AddTopic/index.vue"),
+        component: () => import("../components/AddQuestion/index.vue"),
       },
     ],
   },

@@ -158,7 +158,6 @@ const login = () => {
         // 根据预验证 判断是否发起请求
         if (!valid) return;
         const res = await loginApi(login_Form)
-        console.log(res);
         //判断用户存不存在
         if (res.status === 400) return ElMessage.error(res.message)
         //判断用户是否登录成功

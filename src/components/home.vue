@@ -49,7 +49,7 @@
                             <el-icon>
                                 <Menu />
                             </el-icon>
-                            发布/修改题目
+                            发布题目
                         </el-menu-item>
                     </el-sub-menu>
                 </el-menu>
