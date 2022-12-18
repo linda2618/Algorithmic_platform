@@ -4,7 +4,7 @@
         <el-header>
             <div>
                 <img src="../assets/title.png" alt="">
-                <span>算法在线管理系统</span>
+                <h2>算 法 在 线 管 理 系 统</h2>
             </div>
             <el-button type="info" @click="logout">退出</el-button>
         </el-header>
@@ -107,13 +107,15 @@ const logout = () => {
     display: flex;
     justify-content: space-between;
     color: #fff;
+    height: 120px;
     // text-align: center;
     padding-left: 0;
     font-size: 20px;
-    background-color: #4c5054;
+    background: linear-gradient(to right, pink, skyblue);
+    // background-color: #4c5054;
 
     .el-button {
-        margin-top: 14px;
+        margin-top: 45px;
     }
 
     div {
@@ -126,8 +128,19 @@ const logout = () => {
     }
 }
 
+.el-menu-item {
+    font-size: 18px;
+    background-color: #c0c4cc85;
+}
+
+
 .el-aside {
-    background-color: rgba(84, 92, 100);
+    background: linear-gradient(to bottom, skyblue, pink);
+
+    ::v-deep .el-sub-menu__title {
+        font-size: 20px;
+        background: linear-gradient(45deg, lightyellow, red, skyblue, transparent);
+    }
 
     .el-menu {
         border-right: none;

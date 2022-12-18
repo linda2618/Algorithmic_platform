@@ -1,15 +1,15 @@
 <template>
     <div>
         <el-card>
-            <el-tag class="ml-2" size="large" type="primary">修改题目详情</el-tag>
-
+            <el-tag class="header-title" size="large" type="primary">修改题目详情</el-tag>
+            <el-button type="info" class="goBack" plain @click="goBack">返回上一级</el-button>
             <el-form ref="QuestionDetailRef" :label-position="labelPosition" label-width="100px" :model="QuestionDetail"
                 :rules="QuestionDetailRules" style="max-width: 800px" :size="size">
                 <el-form-item prop="title" label="题目">
-                    <el-input v-model="QuestionDetail.title" type="textarea" clearable />
+                    <el-input v-model="QuestionDetail.title" type="textarea" :rows="10" clearable />
                 </el-form-item>
                 <el-form-item prop="description" label="题目描述">
-                    <el-input v-model="QuestionDetail.description" type="textarea" clearable />
+                    <el-input v-model="QuestionDetail.description" type="textarea" :rows="18" clearable />
                 </el-form-item>
                 <el-form-item prop="degree" label="难度等级">
                     <el-input v-model="QuestionDetail.degree" clearable />
@@ -54,14 +54,14 @@
 
 <script setup>
 import { onMounted, ref, reactive } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getQuestionListById, changeQuestionState } from '@/axios/apis.js'
 import { ElMessage } from "element-plus";
 
 import { Plus } from '@element-plus/icons-vue'
 
 const route = useRoute()
-
+const router = useRouter()
 //接收跳转携带过来的参数Id
 let _id = route.query._id;
 
@@ -125,9 +125,12 @@ const resetForm = () => {
 const editInfo = async () => {
     // console.log(QuestionDetail.value);
     const res = await changeQuestionState(QuestionDetail.value)
-    console.log(res);
+    // console.log(res);
+    ElMessage.success(res.message);
 }
-
+const goBack = () => {
+    router.back()
+}
 
 
 ///////////////////////////////
@@ -179,30 +182,12 @@ const editInfo = async () => {
 </script>
 
 <style  lang="less" scoped>
-.avatar-uploader .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
+.header-title {
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
-.avatar-uploader .el-upload {
-    border: 1px dashed var(--el-border-color);
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: var(--el-transition-duration-fast);
-}
-
-.avatar-uploader .el-upload:hover {
-    border-color: var(--el-color-primary);
-}
-
-.el-icon.avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    text-align: center;
+.goBack {
+    margin-left: 700px;
 }
 </style>

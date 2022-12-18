@@ -25,11 +25,11 @@
                 </div>
             </template> -->
 
-            <el-tag class="ml-2" size="large" type="success">题目列表</el-tag>
+            <el-tag class="header-title" size="large" type="success">题目列表</el-tag>
             <el-table :data="questionList" stripe border style="width: 100%">
                 <el-table-column type="index" />
-                <el-table-column prop="title" label="题目" width="160" />
-                <el-table-column prop="description" label="题目描述" width="520" />
+                <el-table-column prop="title" label="题目" width="360" />
+                <el-table-column prop="description" label="题目描述" width="440" />
                 <el-table-column prop="degree" label="难度等级" width="110">
                     <template v-slot="scope">
                         <el-tag type="primary" v-if="scope.row.degree === '简单'">简单</el-tag>
@@ -47,7 +47,7 @@
                 </el-table-column>
                 <el-table-column prop="add_time" label="添加时间" />
                 <el-table-column prop="upd_time" label="更新时间" />
-                <el-table-column label="操作">
+                <el-table-column label="操作" width="150">
                     <template v-slot="scope">
                         <!-- 修改按钮 -->
                         <el-tooltip class="item" effect="dark" content="跳转修改题目" placement="top" :enterable="false">
@@ -141,5 +141,17 @@ const removeQuestionById = async (_id) => {
 </script>
 
 <style lang="less" scoped>
+.header-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
 
+.el-breadcrumb {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.el-table {
+    font-size: 20px;
+}
 </style>

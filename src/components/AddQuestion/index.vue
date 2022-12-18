@@ -1,16 +1,15 @@
 <template>
-    <div>
-
+    <div class="addQues">
         <el-card>
-            <el-tag class="ml-2" size="large" type="primary">添加题目</el-tag>
+            <el-tag class="header-title" size="large" type="primary">添加题目</el-tag>
 
-            <el-form ref="QuestionDetailRef" :label-position="labelPosition" label-width="100px" :model="QuestionDetail"
-                :rules="QuestionDetailRules" style="max-width: 800px" :size="size">
+            <el-form ref="QuestionDetailRef" :label-position="labelPosition" label-width="150px" :model="QuestionDetail"
+                :rules="QuestionDetailRules" style="max-width: 1000px" :size="size">
                 <el-form-item prop="title" label="题目">
-                    <el-input v-model="QuestionDetail.title" type="textarea" clearable />
+                    <el-input v-model="QuestionDetail.title" type="textarea" :rows="10" clearable />
                 </el-form-item>
                 <el-form-item prop="description" label="题目描述">
-                    <el-input v-model="QuestionDetail.description" type="textarea" clearable />
+                    <el-input v-model="QuestionDetail.description" type="textarea" :rows="18" clearable />
                 </el-form-item>
                 <el-form-item prop="degree" label="难度等级">
                     <el-input v-model="QuestionDetail.degree" clearable />
@@ -23,7 +22,7 @@
                 </el-form-item>
                 <el-form-item label="状态" prop="state">
                     <el-input v-model="QuestionDetail.state" size="small" placeholder="
-                    题目是否发布(true/false)" />
+                    题目是否发布(true/false)" style="height: 30px;" />
                 </el-form-item>
                 <el-form-item label="详情图片" prop="is_promote">
                     <!-- action 表示图片要上传到后台API 地址 -->
@@ -86,5 +85,29 @@ const AddQuestion = async () => {
 </script>
 
 <style  lang="less" scoped>
+.addQues {
 
+    ::v-deep .el-textarea__inner {
+
+        font-size: 20px;
+    }
+
+    ::v-deep .el-form-item__label {
+        font-size: 20px;
+    }
+
+    ::v-deep .el-input__inner {
+        height: 50px;
+        font-size: 18px;
+    }
+
+    ::v-deep .el-form-item {
+        font-style: 20px;
+    }
+}
+
+.header-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
 </style>

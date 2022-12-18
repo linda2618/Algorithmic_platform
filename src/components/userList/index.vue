@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="userShow">
         <!-- 面包屑导航区域 -->
         <el-breadcrumb separator=">">
             <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
@@ -28,10 +28,10 @@
             <el-table :data="usersData" border style="width: 100%">
                 <el-table-column type="index" label="id" />
                 <el-table-column prop="username" label="用户名" />
-                <el-table-column prop="mobile" label="电话" />
                 <el-table-column prop="role" label="角色" />
-                <el-table-column prop="email" label="邮箱" />
-                <el-table-column prop="createdTime" label="创建时间">
+                <el-table-column prop="mobile" label="电话" width="280" />
+                <el-table-column prop="email" label="邮箱" width="280" />
+                <el-table-column prop="createdTime" label="创建时间" width="280">
                     <template v-slot="scope">
                         {{ userTimeFormate(scope.row.createdTime) }}
                     </template>
@@ -266,5 +266,26 @@ const removeUserById = async (_id) => {
 </script>
 
 <style lang="less" scoped>
+.card-header {
+    ::v-deep .el-input {
+        height: 52px;
+        font-size: 22px !important;
+    }
 
+    .el-button {
+        height: 50px;
+        width: 100px;
+    }
+}
+
+.el-breadcrumb {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.userShow {
+    ::v-deep .el-table {
+        font-size: 21px;
+    }
+}
 </style>
