@@ -247,11 +247,6 @@ body {
 
 .demo-tabs {
     margin-left: 10px;
-
-    // 样式穿透
-    // ::v-deep .label_box {
-
-    // }
 }
 
 .title {

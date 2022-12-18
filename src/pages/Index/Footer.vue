@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import '@/assets/css/Index/footer.css'
+import '@/assets/css/Index/footer.less'
 </script>
 
 <style lang="less" scoped>

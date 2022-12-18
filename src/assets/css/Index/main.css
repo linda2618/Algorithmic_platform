@@ -1,0 +1,13 @@
+.index_body {
+  background-color: #f7f8fa;
+}
+.index_body .container {
+  margin-top: 40px;
+  width: 1520px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.index_body .container .study {
+  height: 100px;
+  background-color: #9c9899;
+}

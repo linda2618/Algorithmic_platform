@@ -137,7 +137,7 @@ const logout = () => {
 .el-aside {
     background: linear-gradient(to bottom, skyblue, pink);
 
-    ::v-deep .el-sub-menu__title {
+    :deep(.el-sub-menu__title) {
         font-size: 20px;
         background: linear-gradient(45deg, lightyellow, red, skyblue, transparent);
     }
