@@ -1,0 +1,38 @@
+.h {
+  background-color: #fff;
+}
+.el-header {
+  width: 1700px;
+  margin: 0 auto;
+  font-size: 18px;
+  height: 60px;
+  line-height: 30px;
+  background-color: #fff;
+}
+.el-header .header_left {
+  float: left;
+}
+.el-header .header_left .icon-a-shujutongji20beifen2:before {
+  font-size: 50px;
+}
+.el-header .header_right {
+  float: right;
+  margin-right: 10px;
+}
+.el-header .header_right .el-avatar {
+  margin-top: -6px;
+  --el-avatar-size: 42px;
+}
+.el-header .header_right .iconfont {
+  font-size: 32px;
+}
+.el-header ul > li {
+  list-style: none;
+  float: left;
+  font-size: 16px;
+  margin-right: 25px;
+}
+.el-header ul > li a {
+  color: #000;
+  text-decoration: none;
+}
