@@ -22,8 +22,7 @@
                             <el-checkbox class="checkBox" v-model="isAgree" label="同意用户使用准则" name="type" />
                         </el-form-item>
                         <el-form-item style="width:400px">
-                            <el-button v-if="isAgree" class="login_button" type="primary" plain :size="size"
-                                @click="login">
+                            <el-button v-if="isAgree" class="login_button" type="primary" :size="size" @click="login">
                                 登录
                             </el-button>
                         </el-form-item>
@@ -138,8 +137,8 @@ const size = ref('large')
 //获取表单元素
 const loginFormRef = ref()
 const regFormRef = ref()
-const isAgree = ref(false)
-const rAgree = ref(false)
+const isAgree = ref(true)
+const rAgree = ref(true)
 
 onMounted(() => {
     getUsersLists()
@@ -217,7 +216,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(221, 221, 221, 0.5);
+    background-color: rgba(50, 49, 49, 0.5);
     // auto——效果和没有定义pointer-events属性相同，鼠标不会穿透当前层。
     pointer-events: auto;
 
@@ -229,9 +228,8 @@ body {
         width: 480px;
         height: 600px;
         border-radius: 20px;
-        box-shadow: 10px 5px 5px rgb(225, 219, 219);
+        box-shadow: 5px 5px 5px #ccc;
         background: #fff;
-        border: 1px solid;
 
 
         .login_button {
@@ -273,7 +271,7 @@ body {
 
     span {
         font-size: 30px;
-        color: rgb(125, 127, 127);
+        color: #fff;
         margin-left: 13px;
         line-height: 35px;
     }

@@ -29,10 +29,33 @@
 .el-header ul > li {
   list-style: none;
   float: left;
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 25px;
 }
 .el-header ul > li a {
   color: #000;
   text-decoration: none;
+}
+.el-header ul > li .iconfont {
+  font-size: 16px;
+}
+.el-header select > option {
+  font-size: 24px;
+}
+.el-header .aLast {
+  color: orange;
+}
+.el-header .aLast .iconfont {
+  font-size: 20px;
+}
+.el-header .aLast .selectStyle {
+  outline: none;
+  border: 0;
+  font-size: 19px;
+  color: orange;
+  appearance: none;
+  -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari 和 Chrome */
 }

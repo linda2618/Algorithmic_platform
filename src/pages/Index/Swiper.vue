@@ -9,6 +9,7 @@
             <swiper-slide><img src="@/assets/模型.jpg" alt="" /></swiper-slide>
             <swiper-slide><img src="@/assets/算法.jpg" alt="" /></swiper-slide>
             <swiper-slide><img src="@/assets/题库.jpg" alt="" /></swiper-slide>
+            <swiper-slide><img src="@/assets/技术.jpg" alt="" /></swiper-slide>
         </swiper>
     </div>
 </template>
@@ -72,8 +73,8 @@ const modules = [Autoplay, Pagination, A11y];
 }
 
 :deep(.swiper-pagination-bullet) {
-    width: 14px;
-    height: 14px;
+    width: 11px;
+    height: 11px;
     background-color: #fff;
 }
 
